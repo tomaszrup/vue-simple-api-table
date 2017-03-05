@@ -3,14 +3,14 @@
     <table v-if="!loading">
       <thead>
         <tr>
-          <th v-if="ordered">Num</th>
+          <th v-if="ordered">{{humanifyHeader('num')}}</th>
           <th v-for="key in keys" @click="sort(key)">{{humanifyHeader(key)}}</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="record, index in records">
-          <th v-if="ordered">{{index + 1}}</th>
-          <th v-for="key in keys">{{record[key]}}</th>
+          <td v-if="ordered">{{index + 1}}</td>
+          <td v-for="key in keys">{{record[key]}}</td>
         </tr>
       </tbody>
     </table>
@@ -100,5 +100,45 @@ export default {
 </script>
 
 <style scoped>
+  .simple-api-table {
+    font-size: 0.9em;
+    max-width: 80%;
+    margin: 0 auto;
+    color: #333;
+  }
+
+  .simple-api-table table {
+    text-align: left;
+    background-color: #fff;
+    padding: 5px;
+    border-spacing: 0px;
+  }
+
+  .simple-api-table thead {
+    padding: 5px;
+    font-weight: bold;
+    color: #888;
+    font-family: 'Helvetica';
+  }
+
+  .simple-api-table thead th {
+    white-space: nowrap;
+    padding: 10px;
+    border-bottom: 3px solid #555;
+    cursor: pointer;
+  }
+
+  .simple-api-table thead th:first-child {
+    cursor: default;
+  }
+
+  .simple-api-table tbody tr:nth-child(even){
+    background-color: #eee;
+  }
+
+  .simple-api-table td {
+    padding: 10px;
+    font-family: Arial
+  }
 
 </style>
