@@ -1,21 +1,32 @@
 # simple-api-table
 
-> Simple Vue Api Table
+Simple Vue table to fetch and sort data from REST API.
 
-## Build Setup
+# Dependencies
 
-``` bash
-# install dependencies
-npm install
+* [axios](https://github.com/mzabriskie/axios)
+* [lodash](https://github.com/lodash/lodash)
 
-# serve with hot reload at localhost:8080
-npm run dev
+# Installation
 
-# build for production with minification
-npm run build
+To be added
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# Usage
+
+```
+<simple-api-table url="/your/url/here"> </simple-api-table>
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# API
+
+| Option | Value | Default | Description |
+| ------ | ------ | ------ | ------ |
+| `url` | `http://your/url` or `/your/url` | `undefined` (required) | Specifies the API Url
+| `ordered` | `true` or `false`| `true` | Display records with order numbers
+| `header-case` | `start`, `camel`, `kebab` | `start` | Transform keys to a case for table headings
+| `sort-by-default` | The key you want to sort by | First key | Key the table will be sorted by on render
+| `sort-dir-default` | `asc` or `desc` | `asc` | Direction the table will be sorted in on render
+
+# License
+
+[MIT](https://opensource.org/licenses/MIT)
