@@ -9,8 +9,16 @@ Simple Vue 2 table to fetch and sort data from REST API.
 
 # Installation
 
-To be added. For now you can just extract the `src/components/SimpleApiTable.vue` file and register it as a Vue component.
-Be sure to have the dependencies installed!
+```bash
+npm install simple-api-table
+```
+
+then, in your `main.js`:
+
+```
+import SimpleApiTable from 'simple-api-table'
+Vue.component('simple-api-table', SimpleApiTable)
+```
 
 # Usage
 
