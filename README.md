@@ -15,7 +15,7 @@ npm install simple-api-table
 
 then, in your `main.js`:
 
-```
+```javascript
 import SimpleApiTable from 'simple-api-table'
 Vue.component('simple-api-table', SimpleApiTable)
 ```
