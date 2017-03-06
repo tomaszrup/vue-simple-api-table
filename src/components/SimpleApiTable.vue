@@ -4,7 +4,10 @@
       <thead>
         <tr>
           <th v-if="ordered">{{humanifyHeader('num')}}</th>
-          <th v-for="key in keys" @click="sort(key)">{{humanifyHeader(key)}}</th>
+          <th v-for="key in keys" @click="sort(key)">
+            {{humanifyHeader(key)}}
+            <span v-if="sortBy === key" class="caret">{{caret}}</span>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -103,6 +106,12 @@ export default {
     humanifyHeader (key) {
       return _[this.headerCase + 'Case'](key)
     }
+  },
+  computed: {
+    caret () {
+      if (this.sortDir === 'asc') return '▲'
+      return '▼'
+    }
   }
 }
 </script>
@@ -126,6 +135,7 @@ export default {
     font-weight: bold;
     color: #888;
     font-family: 'Helvetica';
+     user-select: none;
   }
 
   .simple-api-table thead th {
