@@ -7,6 +7,10 @@ Simple Vue 2 table to fetch and sort data from REST API.
 * [axios](https://github.com/mzabriskie/axios)
 * [lodash](https://github.com/lodash/lodash)
 
+# Demo
+
+![Demo](http://i.imgur.com/4kkYPA5.gifv)
+
 # Installation
 
 ```bash
