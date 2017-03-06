@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <simple-api-table sort-by-default="title" url="https://jsonplaceholder.typicode.com/posts"></simple-api-table>
+    <simple-api-table url="https://jsonplaceholder.typicode.com/posts"></simple-api-table>
   </div>
 </template>
 
@@ -14,3 +14,9 @@ export default {
   }
 }
 </script>
+<style media="screen">
+  #app {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+</style>

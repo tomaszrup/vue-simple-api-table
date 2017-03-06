@@ -26,6 +26,7 @@ To be added
 | `header-case` | `start`, `camel`, `kebab` | `start` | Transform keys to a case for table headings
 | `sort-by-default` | The key you want to sort by | First key | Key the table will be sorted by on render
 | `sort-dir-default` | `asc` or `desc` | `asc` | Direction the table will be sorted in on render
+| `except-keys` | Array of keys | `[]` | Keys you dont want to be displayed
 
 # License
 

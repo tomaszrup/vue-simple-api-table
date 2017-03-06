@@ -44,10 +44,12 @@ export default {
       type: String
     },
     sortDirDefault: {
-      type: String
+      type: String,
+      default: 'asc'
     },
-    filterByDefault: {
-      type: String
+    exceptKeys: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
@@ -80,17 +82,23 @@ export default {
       axios.get(this.url).then(response => {
         if (!response.data[0]) return console.error('Api returned nothing.')
 
-        this.keys = _.keys(response.data[0])
+        this.keys = this.removeSpecifiedKeys(_.keys(response.data[0]))
         this.records = response.data
 
         this.sortBy = this.sortByDefault ? this.sortByDefault : this.keys[0]
-        this.sortDir = this.sortDirDefault ? this.sortDirDefault : 'asc'
+        this.sortDir = this.sortDirDefault
 
         this.sort()
         this.loading = false
       }).catch(error => {
         console.error(error)
       })
+    },
+    removeSpecifiedKeys (keys) {
+      for (var i = keys.length; i >= 0; i--) {
+        if (this.exceptKeys.includes(keys[i])) keys.splice(i, 1)
+      }
+      return keys
     },
     humanifyHeader (key) {
       return _[this.headerCase + 'Case'](key)
@@ -102,7 +110,6 @@ export default {
 <style scoped>
   .simple-api-table {
     font-size: 0.9em;
-    max-width: 80%;
     margin: 0 auto;
     color: #333;
   }
@@ -124,7 +131,7 @@ export default {
   .simple-api-table thead th {
     white-space: nowrap;
     padding: 10px;
-    border-bottom: 3px solid #555;
+    border-bottom: 1px solid #555;
     cursor: pointer;
   }
 
