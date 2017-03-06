@@ -9,7 +9,7 @@ Simple Vue 2 table to fetch and sort data from REST API.
 
 # Demo
 
-![Demo](http://i.imgur.com/4kkYPA5.gifv)
+![Demo](http://i.imgur.com/KStnrCV.gif)
 
 # Installation
 
