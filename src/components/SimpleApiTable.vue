@@ -1,5 +1,14 @@
 <template>
   <div class="simple-api-table">
+    <div class="show-select">
+      Show
+        <select v-model="perPage" @change="currentPage = 1">
+          <option value="10">10</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="500">500</option>
+        </select>
+    </div>
     <table v-if="!loading">
       <thead>
         <tr>
@@ -11,12 +20,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="record, index in records">
+        <tr v-for="record, index in records" v-if="isOnCurrentPage(index)">
           <td v-if="ordered">{{index + 1}}</td>
           <td v-for="key in keys">{{record[key]}}</td>
         </tr>
       </tbody>
     </table>
+    <div class="pagination">
+      <button v-for="page in totalPages" :class="{'active': currentPage === page}" @click="currentPage = page">{{page}}</button>
+    </div>
     <h1 v-if="loading">Loading...</h1>
   </div>
 </template>
@@ -61,7 +73,9 @@ export default {
       records: [],
       loading: false,
       sortDir: '',
-      sortBy: ''
+      sortBy: '',
+      perPage: 50,
+      currentPage: 1
     }
   },
   methods: {
@@ -105,12 +119,18 @@ export default {
     },
     humanifyHeader (key) {
       return _[this.headerCase + 'Case'](key)
+    },
+    isOnCurrentPage (index) {
+      return index >= (this.currentPage - 1) * this.perPage && index < this.currentPage * this.perPage
     }
   },
   computed: {
     caret () {
       if (this.sortDir === 'asc') return '▲'
       return '▼'
+    },
+    totalPages () {
+      return Math.ceil(this.records.length / this.perPage)
     }
   }
 }
@@ -156,6 +176,10 @@ export default {
   .simple-api-table td {
     padding: 10px;
     font-family: Arial
+  }
+
+  .pagination .active {
+    background-color: orangered;
   }
 
 </style>
